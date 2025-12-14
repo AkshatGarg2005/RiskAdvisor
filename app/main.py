@@ -682,7 +682,6 @@ async def chat_with_portfolio(request: ChatRequest):
         if holdings:
             print(f"💼 First holding sample: {holdings[0] if holdings else 'None'}")
         print(f"📜 Chat history: {len(request.chat_history)} messages")
-        
         # Detect if this is a market analysis question
         market_keywords = [
             "market", "going to rise", "going to fall", "will rise", "will fall",
@@ -690,11 +689,28 @@ async def chat_with_portfolio(request: ChatRequest):
             "trend", "outlook", "bullish", "bearish", "crash", "rally",
             "news", "analyst", "sentiment", "future", "going up", "going down",
             "fall", "rise", "drop", "surge", "dump", "pump", "moon", "tank",
-            "buy or sell", "should i buy", "should i sell", "price target",
-            "will it go", "what will happen", "price prediction"
+            "price target", "will it go", "what will happen", "price prediction"
         ]
+        
+        # Detect if this is a PERSONAL portfolio question (should use portfolio agent)
+        portfolio_keywords = [
+            "my stock", "my portfolio", "my holdings", "my investment",
+            "should i sell", "should i buy", "should i hold",
+            "sell my", "buy more", "add to my", "reduce my",
+            "what should i do", "what do you recommend for me",
+            "my aapl", "my googl", "my msft", "my tsla", "my nvda",  # Common holdings
+            "profit", "loss", "gain", "return"
+        ]
+        
         message_lower = request.message.lower()
+        
+        # Check for personal portfolio questions FIRST (these take priority)
+        is_portfolio_question = any(keyword in message_lower for keyword in portfolio_keywords)
         is_market_question = any(keyword in message_lower for keyword in market_keywords)
+        
+        # If it's a personal question, always use portfolio agent
+        # Only use market agent for general questions like "will NVDA fall?" (not "should I sell MY NVDA")
+        use_market_agent = is_market_question and not is_portfolio_question
         
         # Create portfolio summary for context
         portfolio_summary = get_portfolio_summary(request.portfolio_context)
@@ -735,7 +751,7 @@ Always use the tools for calculations - don't estimate manually."""
         session_id = f"chat_{uuid.uuid4().hex[:8]}"
         
         # Choose agent based on question type
-        if is_market_question:
+        if use_market_agent:
             print(f"📈 Detected MARKET question - using MarketAnalyzer with web search...")
             selected_agent = market_analyzer_agent
             agent_type = "market"
