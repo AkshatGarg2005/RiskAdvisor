@@ -1,0 +1,672 @@
+/* 
+ * RiskDashboard - Mobile-First Responsive Design
+ * Clean card layouts with smooth animations
+ */
+
+.risk-dashboard {
+    margin-top: 1rem;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ============================================
+   DASHBOARD GRID - Mobile First (Single Column)
+   ============================================ */
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
+}
+
+/* ============================================
+   CARDS - Base Styles
+   ============================================ */
+.card {
+    background: linear-gradient(145deg, #151530 0%, #1a1a3a 100%);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    word-break: break-word;
+    width: 100%;
+    max-width: 100%;
+}
+
+.card h3 {
+    color: #f1f5f9;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   RISK SCORE CARD
+   ============================================ */
+.risk-score-card {
+    text-align: center;
+    position: relative;
+}
+
+.risk-gauge {
+    position: relative;
+    height: 160px;
+}
+
+.risk-score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.risk-score-value .score {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.risk-score-value .label {
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.risk-level {
+    display: inline-block;
+    padding: 0.4rem 1.25rem;
+    border-radius: 20px;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 0.75rem 0;
+}
+
+.interpretation {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ============================================
+   VALUE CARD
+   ============================================ */
+.value-card .big-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #22c55e;
+    margin: 0.75rem 0;
+}
+
+.value-card .meta {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin: 0.2rem 0;
+}
+
+/* ============================================
+   RISK GUIDE CARD
+   ============================================ */
+.risk-guide-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.score-scale {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    margin-bottom: 0.75rem;
+}
+
+.scale-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 6px 8px;
+    text-align: center;
+    border-left: 3px solid;
+}
+
+.scale-item.low {
+    border-color: #22c55e;
+}
+
+.scale-item.moderate {
+    border-color: #f59e0b;
+}
+
+.scale-item.elevated {
+    border-color: #f97316;
+}
+
+.scale-item.high {
+    border-color: #ef4444;
+}
+
+.scale-item .range {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+.scale-item .level {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.scale-item.low .level {
+    color: #22c55e;
+}
+
+.scale-item.moderate .level {
+    color: #f59e0b;
+}
+
+.scale-item.elevated .level {
+    color: #f97316;
+}
+
+.scale-item.high .level {
+    color: #ef4444;
+}
+
+.guide-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.guide-sections h4 {
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.ideal-score,
+.comparison-box {
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.ideal-score p,
+.comparison-box p {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.target-score {
+    color: #22c55e;
+    font-weight: 700;
+    background: rgba(34, 197, 94, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* ============================================
+   RECOMMENDATIONS
+   ============================================ */
+.recommendations-card {
+    order: 10;
+    margin-top: 0.75rem;
+}
+
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.recommendation {
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 10px;
+    padding: 0.875rem;
+    border-left: 3px solid #6366f1;
+}
+
+.recommendation.buy {
+    border-left-color: #22c55e;
+}
+
+.recommendation.sell {
+    border-left-color: #ef4444;
+}
+
+.recommendation.hold {
+    border-left-color: #f59e0b;
+}
+
+.rec-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.action-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.action-badge.buy {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.action-badge.sell {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.action-badge.hold {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.action-badge.review {
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+}
+
+.rec-header .stock {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.rec-header .confidence {
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-left: auto;
+}
+
+.recommendation .reason {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ============================================
+   SCENARIOS
+   ============================================ */
+.scenarios-card {
+    order: 11;
+    margin-top: 0.75rem;
+}
+
+.scenarios-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.scenario {
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 10px;
+    padding: 0.875rem;
+    position: relative;
+}
+
+.scenario h4 {
+    color: #f1f5f9;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.scenario-metrics {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.scenario-metrics .metric {
+    text-align: center;
+}
+
+.scenario-metrics .label {
+    display: block;
+    font-size: 0.65rem;
+    color: #64748b;
+    margin-bottom: 0.2rem;
+}
+
+.scenario-metrics .value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+.scenario-metrics .arrow {
+    color: #6366f1;
+    font-size: 1.25rem;
+}
+
+.scenario .analysis {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.impact-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.impact-badge.positive {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.impact-badge.negative {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.impact-badge.neutral,
+.impact-badge.cautionary {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+.alerts-card {
+    order: 12;
+    margin-top: 0.75rem;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alert {
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border-left: 3px solid #6366f1;
+}
+
+.alert.high {
+    border-left-color: #ef4444;
+}
+
+.alert.medium {
+    border-left-color: #f59e0b;
+}
+
+.alert.low,
+.alert.info {
+    border-left-color: #22c55e;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.severity-badge {
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.severity-badge.high {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.severity-badge.medium {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.severity-badge.low,
+.severity-badge.info {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.alert-header .type {
+    color: #64748b;
+    font-size: 0.75rem;
+}
+
+.alert .message {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.alert .action {
+    color: #6366f1;
+    font-size: 0.8rem;
+    margin: 0.4rem 0 0 0;
+}
+
+/* ============================================
+   TIMESTAMP
+   ============================================ */
+.timestamp {
+    text-align: center;
+    color: #475569;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* ============================================
+   TABLET BREAKPOINT (640px+)
+   ============================================ */
+@media (min-width: 640px) {
+    .risk-dashboard {
+        margin-top: 1.25rem;
+        padding: 0;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .risk-gauge {
+        height: 180px;
+    }
+
+    .risk-score-value .score {
+        font-size: 2.75rem;
+    }
+
+    .value-card .big-number {
+        font-size: 2rem;
+    }
+
+    .recommendations-card,
+    .scenarios-card,
+    .alerts-card {
+        grid-column: 1 / -1;
+    }
+
+    .recommendations-list,
+    .scenarios-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .score-scale {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .guide-sections {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .ideal-score,
+    .comparison-box {
+        flex: 1;
+    }
+
+    .card {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* ============================================
+   DESKTOP BREAKPOINT (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+    .risk-dashboard {
+        margin-top: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
+
+    .risk-gauge {
+        height: 180px;
+    }
+
+    .risk-score-value .score {
+        font-size: 2.75rem;
+    }
+
+    .risk-level {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .value-card .big-number {
+        font-size: 2.25rem;
+    }
+
+    .value-card .meta {
+        font-size: 0.85rem;
+    }
+
+    .recommendations-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+
+    .recommendation {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .recommendation .reason {
+        font-size: 0.9rem;
+    }
+
+    .scenarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+
+    .scenario {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .alerts-list {
+        gap: 0.75rem;
+    }
+
+    .alert {
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1280px+)
+   ============================================ */
+@media (min-width: 1280px) {
+    .risk-dashboard {
+        padding: 0 1rem;
+    }
+
+    .dashboard-grid {
+        gap: 1.5rem;
+    }
+
+    .card {
+        padding: 1.75rem;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+    }
+
+    .risk-gauge {
+        height: 200px;
+    }
+
+    .risk-score-value .score {
+        font-size: 3rem;
+    }
+
+    .value-card .big-number {
+        font-size: 2.5rem;
+    }
+
+    .recommendations-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .scenarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .recommendation,
+    .scenario {
+        padding: 1.5rem;
+    }
+}

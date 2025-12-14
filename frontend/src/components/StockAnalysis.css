@@ -1,0 +1,197 @@
+/* StockAnalysis.css - Individual stock risk analysis styling */
+
+.stock-analysis-container {
+    background: linear-gradient(145deg, rgba(30, 35, 55, 0.95), rgba(20, 24, 40, 0.98));
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stock-analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.stock-analysis-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.stock-summary {
+    display: flex;
+    gap: 16px;
+}
+
+.summary-item {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.summary-item.high-risk {
+    color: #f97316;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.summary-item.sell {
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.stock-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.stock-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.stock-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.stock-card.high {
+    border-left: 3px solid #ef4444;
+}
+
+.stock-card.elevated {
+    border-left: 3px solid #f97316;
+}
+
+.stock-card.moderate {
+    border-left: 3px solid #f59e0b;
+}
+
+.stock-card.low {
+    border-left: 3px solid #22c55e;
+}
+
+.stock-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.stock-symbol {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.recommendation-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stock-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.metric-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.metric-value.positive {
+    color: #22c55e;
+}
+
+.metric-value.negative {
+    color: #ef4444;
+}
+
+.risk-meter {
+    margin-bottom: 12px;
+}
+
+.risk-bar-container {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.risk-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.risk-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.stock-reasons {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.reason-item {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.reason-item:last-child {
+    margin-bottom: 0;
+}
+
+.stock-action {
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stock-analysis-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stock-cards {
+        grid-template-columns: 1fr;
+    }
+}
