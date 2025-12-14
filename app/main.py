@@ -688,7 +688,10 @@ async def chat_with_portfolio(request: ChatRequest):
             "market", "going to rise", "going to fall", "will rise", "will fall",
             "stock price", "forecast", "prediction", "next week", "next month",
             "trend", "outlook", "bullish", "bearish", "crash", "rally",
-            "news", "analyst", "sentiment", "future", "going up", "going down"
+            "news", "analyst", "sentiment", "future", "going up", "going down",
+            "fall", "rise", "drop", "surge", "dump", "pump", "moon", "tank",
+            "buy or sell", "should i buy", "should i sell", "price target",
+            "will it go", "what will happen", "price prediction"
         ]
         message_lower = request.message.lower()
         is_market_question = any(keyword in message_lower for keyword in market_keywords)
